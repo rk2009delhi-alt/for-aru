@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Aru 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{margin:0;font-family:'Poppins',sans-serif;}
+
+.section{
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+/* SECTION 1 */
+#section1{background:linear-gradient(to bottom,#fff3f7,#ffd9e8);}
+.sorry-text{font-family:'Playfair Display',serif;font-size:80px;color:#c0567c;margin-bottom:20px;}
+.flowers{width:380px;margin-bottom:30px;}
+.btn{padding:14px 35px;border:none;border-radius:40px;background:#ff5e7e;color:white;font-size:16px;cursor:pointer;}
+.petal{position:absolute;top:-20px;font-size:20px;animation:fall linear forwards;}
+@keyframes fall{to{transform:translateY(110vh);}}
+
+/* SECTION 2 */
+#section2{display:none;background:linear-gradient(to bottom,#ffe3ec,#ffc2d6);}
+.question{font-family:'Playfair Display',serif;font-size:38px;margin-bottom:10px;}
+.subtext{font-size:14px;margin-bottom:20px;}
+.chat-box{background:#ff8fab;padding:25px;border-radius:20px;max-width:500px;color:white;display:none;}
+
+/* SECTION 3 */
+#section3{display:none;background:linear-gradient(to bottom,#fff0f6,#ffd6e8);}
+.envelope{width:240px;height:150px;background:white;position:relative;border-radius:4px;}
+.flap{
+  width:0;height:0;
+  border-left:120px solid transparent;
+  border-right:120px solid transparent;
+  border-bottom:75px solid #f8cdd4;
+  position:absolute;top:-75px;left:0;
+  transition:1s;transform-origin:bottom;
+}
+.flap.open{transform:rotateX(180deg);}
+.seal{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:28px;cursor:pointer;}
+.click-heart-text{margin-top:20px;font-size:15px;color:#c0567c;font-style:italic;}
+.paper{width:380px;background:white;padding:30px;margin-top:30px;border-radius:10px;display:none;line-height:1.6;}
+
+/* SECTION 4 */
+#section4{display:none;background:#3b1c24;position:relative;overflow:hidden;}
+#section4::before{
+  content:"i love you   i love you   i love you   ";
+  position:absolute;font-family:'Playfair Display',serif;
+  font-size:60px;color:rgba(255,255,255,0.05);
+  transform:rotate(-15deg);width:200%;height:200%;line-height:120px;
+}
+.confession-container{width:100%;height:100%;display:flex;justify-content:center;align-items:center;}
+.confession-box{
+  width:650px;padding:50px;
+  background:radial-gradient(circle at center,rgba(255,255,255,0.08) 0%,rgba(0,0,0,0.85) 70%);
+  border-radius:15px;color:white;line-height:1.7;
+  opacity:0;transition:opacity 1.5s ease;
+}
+.next-btn{
+  position:absolute;right:40px;bottom:40px;
+  border:1px solid #ffd6e8;background:none;color:#ffd6e8;
+  padding:8px 16px;cursor:pointer;opacity:0;transition:opacity 1.5s ease;
+}
+
+/* SECTION 5 */
+#section5{display:none;background:linear-gradient(to bottom,#ffeef5,#ffd6e8);}
+.polaroid-container{display:flex;justify-content:center;align-items:center;gap:30px;flex-wrap:wrap;}
+.polaroid{
+  background:white;padding:15px 15px 40px 15px;width:180px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transition:all 0.5s ease;
+  opacity:0;transform:translateY(50px);
+}
+.polaroid img{width:100%;height:200px;object-fit:cover;}
+.polaroid p{margin-top:10px;font-size:14px;color:#c0567c;}
+.rotate1{transform:rotate(-8deg);}
+.rotate2{transform:rotate(6deg);}
+.rotate3{transform:rotate(-4deg);}
+.rotate4{transform:rotate(5deg);}
+.rotate5{transform:rotate(-6deg);}
+.memory-line{margin-top:50px;font-family:'Playfair Display',serif;font-size:22px;color:#b84c6f;opacity:0;transition:opacity 2s ease;}
+.trust-btn{
+  position:absolute;right:40px;bottom:40px;
+  border:1px solid #c0567c;background:none;color:#c0567c;
+  padding:8px 16px;cursor:pointer;opacity:0;transition:opacity 1.5s ease;
+}
+
+/* SECTION 6 */
+#section6{display:none;background:linear-gradient(to bottom,#fff3f7,#ffd9e8);position:relative;}
+.final-btn{padding:10px 18px;margin:10px;border:1px solid #c0567c;background:none;color:#c0567c;cursor:pointer;}
+.final-btn:hover{background:#c0567c;color:white;}
+
+#bigHeartOverlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background:rgba(255,255,255,0.97);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+.big-heart{
+  font-size:160px;
+  animation:heartbeat 1s infinite;
+}
+
+.big-heart-text{
+  margin-top:20px;
+  font-family:'Playfair Display', serif;
+  font-size:30px;
+  color:#c0567c;
+  text-align:center;
+}
+
+@keyframes heartbeat{
+  0%{transform:scale(1);}
+  25%{transform:scale(1.12);}
+  40%{transform:scale(1);}
+  60%{transform:scale(1.18);}
+  100%{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="section" id="section1">
+<h1 class="sorry-text">I'm Sorry</h1>
+<img src="flowers.png" class="flowers">
+<button class="btn" onclick="goToSection2()">Click if you think I'm worth it</button>
+</div>
+
+<div class="section" id="section2">
+<div id="questionBox">
+<h2 class="question">Do you think I love you?</h2>
+<p class="subtext" id="noText">try clicking no 3 times</p>
+<button class="btn" onclick="yesClicked()">Yes ❤️</button>
+<button class="btn" onclick="noClicked()">No</button>
+</div>
+<div class="chat-box" id="chatBox"></div>
+</div>
+
+<div class="section" id="section3">
+<div class="envelope">
+<div class="flap" id="flap"></div>
+<div class="seal" onclick="openLetter()">💖</div>
+</div>
+<div class="click-heart-text">click the heart 💗</div>
+<div class="paper" id="paper">
+for you, always 💌<br><br>
+i dont want secrets<br>
+i dont want ego<br>
+i just want us<br><br>
+im still here 🤍
+</div>
+</div>
+
+<div class="section" id="section4">
+<div class="confession-container">
+<div class="confession-box" id="confessionBox">
+i need to say this properly<br><br>
+aru mujhe full transparent rehna hai<br>
+i dont want any lies between us<br><br>
+i know ive messed up before<br>
+and i wont pretend like i didnt<br><br>
+im sorry for the lies<br>
+im sorry for the hurt<br><br>
+losing you this week hit me hard<br>
+it made me realise how much you matter<br><br>
+im serious about changing<br>
+not just saying sorry<br><br>
+i wont repeat the same mistakes<br>
+and i wont take you for granted again<br><br>
+but im here<br>
+honestly
+</div>
+</div>
+<button class="next-btn" id="nextBtn">next</button>
+</div>
+
+<div class="section" id="section5">
+<h2 style="font-family:'Playfair Display',serif;margin-bottom:40px;color:#c0567c;">us 🤍</h2>
+<div class="polaroid-container">
+<div class="polaroid rotate1"><img src="pic1.jpg"><p>that day 🥺</p></div>
+<div class="polaroid rotate2"><img src="pic2.jpg"><p>still my fav</p></div>
+<div class="polaroid rotate3"><img src="pic3.jpg"><p>you smiling >></p></div>
+<div class="polaroid rotate4"><img src="pic4.jpg"><p>soft moments</p></div>
+<div class="polaroid rotate5"><img src="pic5.jpg"><p>us being us</p></div>
+</div>
+<div class="memory-line" id="memoryLine">i still choose this story 🤍</div>
+<button class="trust-btn" id="trustBtn">click if u trust me even 1%</button>
+</div>
+
+<div class="section" id="section6">
+<h2 style="font-family:'Playfair Display',serif;color:#c0567c;">i’ll prove it</h2>
+<p style="margin-top:10px;">not just promise it</p>
+<div style="margin-top:30px;">
+<button class="final-btn" onclick="showHeart()">🤍 try again</button>
+<button class="final-btn" onclick="showHeart()">🫂 hug</button>
+<button class="final-btn" id="noBtn" onclick="handleNo()">❌ no rishi i cant do this</button>
+</div>
+<p id="noSubtext" style="margin-top:20px;color:#c0567c;"></p>
+
+<div id="bigHeartOverlay">
+  <div class="big-heart">❤️</div>
+  <div class="big-heart-text">
+    i’m sorry <br> & i love you</div>
+</div>
+</div>
+</div>
+</div>
+
+<audio id="bgMusic"><source src="music.mp3"></audio>
+<audio id="memoryMusic"><source src="memory.mp3"></audio>
+
+<script>
+let currentSection=1;
+
+setInterval(()=>{
+if(currentSection<4){
+const p=document.createElement("div");
+p.className="petal";
+p.innerHTML="🌸";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(Math.random()*6+6)+"s";
+document.body.appendChild(p);
+setTimeout(()=>p.remove(),8000);
+}
+},700);
+
+function goToSection2(){
+currentSection=2;
+section1.style.display="none";
+section2.style.display="flex";
+}
+
+let noCount=0;
+function noClicked(){
+noCount++;
+if(noCount===1) noText.innerText="REALLY BABY????";
+else if(noCount===2) noText.innerText="i make mistakes but REALLY u think so bubbles?";
+else if(noCount===3) noText.innerText="i love you more than anyone 🥺 click yes now";
+}
+
+function yesClicked(){
+questionBox.style.display="none";
+chatBox.style.display="block";
+chatBox.innerHTML="Aru tu meri jaan hai<br><br>im sorry sweetie 💗";
+bgMusic.currentTime=50;
+bgMusic.play();
+setTimeout(()=>bgMusic.pause(),15000);
+setTimeout(()=>{currentSection=3;section2.style.display="none";section3.style.display="flex";},5000);
+}
+
+function openLetter(){
+flap.classList.add("open");
+paper.style.display="block";
+setTimeout(()=>{
+currentSection=4;
+section3.style.display="none";
+section4.style.display="flex";
+confessionBox.style.opacity=1;
+nextBtn.style.opacity=1;
+},4000);
+}
+
+nextBtn.onclick=function(){
+currentSection=5;
+section4.style.display="none";
+section5.style.display="flex";
+memoryMusic.currentTime=80;
+memoryMusic.play();
+const cards=document.querySelectorAll(".polaroid");
+cards.forEach((card,i)=>{
+setTimeout(()=>{card.style.opacity=1;card.style.transform="translateY(0)";},i*600);
+});
+setTimeout(()=>memoryLine.style.opacity=1,3000);
+setTimeout(()=>{
+memoryMusic.pause();
+trustBtn.style.opacity=1;
+},30000);
+};
+
+trustBtn.onclick=function(){
+section5.style.display="none";
+section6.style.display="flex";
+};
+
+let noClicks=0;
+function handleNo(){
+noClicks++;
+if(noClicks===1) noSubtext.innerText="aru you cant just disappear like that 😭";
+else if(noClicks===2) noSubtext.innerText="at least let me try properly this time";
+else noSubtext.innerText="if you still choose no, i wont chase… but ill always care";
+}
+
+function showHeart(){
+document.getElementById("bigHeartOverlay").style.display="flex";
+}
+</script>
+
+</body>
+</html>
